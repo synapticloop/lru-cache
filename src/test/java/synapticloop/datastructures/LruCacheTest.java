@@ -63,7 +63,7 @@ public class LruCacheTest {
 		assertEquals("{ 3:3 }, { 2:2 }, { 1:1 }", lruCache.toString());
 
 		lruCache.put(4, 4);
-		assertEquals("{ 3:3 }, { 2:2 }, { 4:4 }", lruCache.toString());
+		assertEquals("{ 2:2 }, { 1:1 }, { 4:4 }", lruCache.toString());
 	}
 
 	@Test(expected = NullPointerException.class)
