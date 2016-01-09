@@ -1,0 +1,99 @@
+plugins {
+	id 'java'
+	id 'eclipse'
+	id "maven"
+	id "maven-publish"
+	id 'net.saliman.cobertura' version '2.2.6'
+	id "com.jfrog.bintray" version "1.4"
+}
+
+group = 'synapticloop'
+archivesBaseName = 'lru-cache'
+description = """A simple LRU cache implementation for java"""
+
+version = 'v1.0.0'
+
+description = """lru-cache"""
+
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
+
+
+
+repositories {
+	mavenLocal()
+	mavenCentral()
+	jcenter()
+}
+
+dependencies {
+	testCompile 'junit:junit:4.7'
+}
+
+/*
+ * COBERTURA
+ */
+
+cobertura {
+	coverageFormats = [ 'html', 'xml']
+}
+
+test {
+	include '**/*Test.class' 
+	maxParallelForks = 1
+	forkEvery = 50 
+}
+
+def javaApiUrl = 'http://docs.oracle.com/javase/1.6.0/docs/api/'
+def groovyApiUrl = 'http://groovy.codehaus.org/gapi/'
+
+tasks.withType(Javadoc) {
+	options.links(javaApiUrl, groovyApiUrl)
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+	classifier = 'javadoc'
+	from 'build/docs/javadoc'
+}
+
+task sourcesJar(type: Jar) {
+	from sourceSets.main.allSource
+	classifier = 'sources'
+}
+
+publishing {
+	publications {
+		Synapticloop(MavenPublication) {
+			from components.java
+			artifact sourcesJar
+			artifact javadocJar
+
+			groupId 'synapticloop'
+			artifactId 'lr-cache'
+
+			pom.withXml {
+				configurations.compile.resolvedConfiguration.firstLevelModuleDependencies.each { dep ->
+					asNode().dependencies[0].dependency.find {
+						it.artifactId[0].text() == dep.moduleName &&
+								it.groupId[0].text() == dep.moduleGroup
+					}.scope[0].value = 'compile'
+				}
+			}
+		}
+	}
+}
+
+bintray {
+	user = System.getenv('BINTRAY_USER')
+	key = System.getenv('BINTRAY_PASSWORD')
+
+	publications = [ 'Synapticloop' ]
+
+	publish = true
+
+	pkg {
+		repo = 'maven'
+		name = 'lru-cache'
+	}
+
+}
