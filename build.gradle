@@ -69,7 +69,7 @@ publishing {
 			artifact javadocJar
 
 			groupId 'synapticloop'
-			artifactId 'lr-cache'
+			artifactId 'lru-cache'
 
 			pom.withXml {
 				configurations.compile.resolvedConfiguration.firstLevelModuleDependencies.each { dep ->
