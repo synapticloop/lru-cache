@@ -1,8 +1,54 @@
-<img src="https://travis-ci.org/synapticloop/lru-cache.svg?branch=master" />
+
+
+> **This project requires JVM version of at least 1.7**
+
+
+
+
+
+
+<a name="heading_0"></a>
+
+# lru-cache <sup><sup>[top](#)</sup></sup>
+
+
+
+> lru-cache
+
+
+
+
+
+
+<a name="heading_1"></a>
+
+# Table of Contents <sup><sup>[top](#)</sup></sup>
+
+
+
+ - [lru-cache](#heading_0)
+ - [Table of Contents](#heading_1)
+ - [Usage](#heading_2)
+ - [Building the Package](#heading_3)
+   - [*NIX/Mac OS X](#heading_4)
+   - [Windows](#heading_5)
+ - [Running the Tests](#heading_6)
+   - [*NIX/Mac OS X](#heading_7)
+   - [Windows](#heading_8)
+   - [Dependencies - Gradle](#heading_9)
+   - [Dependencies - Maven](#heading_10)
+   - [Dependencies - Downloads](#heading_11)
+
 
 A small (~3k) Least Recently Used cache implementation.
 
-# Usage
+
+
+<a name="heading_2"></a>
+
+# Usage <sup><sup>[top](#)</sup></sup>
+
+
 
 
 ```
@@ -43,86 +89,155 @@ System.out.println(lruCacheSmall.toString()); // "{ 3:3 }, { 2:2 }, { 4:4 }"
 
 ```
 
-# Dependency Management
 
-> Note that the latest version can be found [https://bintray.com/synapticloop/maven/lru-cache/view](https://bintray.com/synapticloop/maven/lru-cache/view)
 
-Include the dependency
 
-## maven
 
-this comes from the jcenter bintray, to set up your repository:
+<a name="heading_3"></a>
 
-    <?xml version="1.0" encoding="UTF-8" ?>
-    <settings xsi:schemaLocation='http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd' xmlns='http://maven.apache.org/SETTINGS/1.0.0' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
-      <profiles>
-        <profile>
-          <repositories>
-            <repository>
-              <snapshots>
-                <enabled>false</enabled>
-              </snapshots>
-              <id>central</id>
-              <name>bintray</name>
-              <url>http://jcenter.bintray.com</url>
-            </repository>
-          </repositories>
-          <pluginRepositories>
-            <pluginRepository>
-              <snapshots>
-                <enabled>false</enabled>
-              </snapshots>
-              <id>central</id>
-              <name>bintray-plugins</name>
-              <url>http://jcenter.bintray.com</url>
-            </pluginRepository>
-          </pluginRepositories>
-          <id>bintray</id>
-        </profile>
-      </profiles>
-      <activeProfiles>
-        <activeProfile>bintray</activeProfile>
-      </activeProfiles>
-    </settings>
+# Building the Package <sup><sup>[top](#)</sup></sup>
 
-And now for the dependency
 
-    <dependency>
-      <groupId>synapticloop</groupId>
-      <artifactId>lru-cache</artifactId>
-      <version>v1.0.0</version>
-      <type>jar</type>
-    </dependency>
- 
- 
-## gradle
 
-Repository
+<a name="heading_4"></a>
 
-    repositories {
-        maven {
-            url  "http://jcenter.bintray.com" 
-        }
-    }
- 
- or just
- 
-    repositories {
-      jcenter()
-    }
+## *NIX/Mac OS X <sup><sup>[top](#)</sup></sup>
 
-and then include the dependency:
+From the root of the project, simply run
 
-    runtime(group: 'synapticloop', name: 'lru-cache', version: 'v1.0.0', ext: 'jar')
+`./gradlew build`
 
-    compile(group: 'synapticloop', name: 'lru-cache', version: 'v1.0.0', ext: 'jar')
- 
-or 
 
-    runtime 'synapticloop:lru-cache:v1.0.0'
 
-    compile 'synapticloop:lru-cache:v1.0.0'
-    
-## Other
 
-You may either download the files from [https://bintray.com/synapticloop/maven/lru-cache/](https://bintray.com/synapticloop/maven/lru-cache/) or from [https://github.com/synapticloop/lru-cache/releases](https://github.com/synapticloop/lru-cache/releases)
+<a name="heading_5"></a>
+
+## Windows <sup><sup>[top](#)</sup></sup>
+
+`./gradlew.bat build`
+
+
+This will compile and assemble the artefacts into the `build/libs/` directory.
+
+Note that this may also run tests (if applicable see the Testing notes)
+
+
+
+<a name="heading_6"></a>
+
+# Running the Tests <sup><sup>[top](#)</sup></sup>
+
+
+
+<a name="heading_7"></a>
+
+## *NIX/Mac OS X <sup><sup>[top](#)</sup></sup>
+
+From the root of the project, simply run
+
+`gradle --info test`
+
+if you do not have gradle installed, try:
+
+`gradlew --info test`
+
+
+
+<a name="heading_8"></a>
+
+## Windows <sup><sup>[top](#)</sup></sup>
+
+From the root of the project, simply run
+
+`gradle --info test`
+
+if you do not have gradle installed, try:
+
+`./gradlew.bat --info test`
+
+
+The `--info` switch will also output logging for the tests
+
+
+
+<a name="heading_9"></a>
+
+## Dependencies - Gradle <sup><sup>[top](#)</sup></sup>
+
+
+
+```
+dependencies {
+	runtime(group: 'synapticloop', name: 'lru-cache', version: '2.0.0', ext: 'jar')
+
+	compile(group: 'synapticloop', name: 'lru-cache', version: '2.0.0', ext: 'jar')
+}
+```
+
+
+
+or, more simply for versions of gradle greater than 2.1
+
+
+
+```
+dependencies {
+	runtime 'synapticloop:lru-cache:2.0.0'
+
+	compile 'synapticloop:lru-cache:2.0.0'
+}
+```
+
+
+
+
+
+<a name="heading_10"></a>
+
+## Dependencies - Maven <sup><sup>[top](#)</sup></sup>
+
+
+
+```
+<dependency>
+	<groupId>synapticloop</groupId>
+	<artifactId>lru-cache</artifactId>
+	<version>2.0.0</version>
+	<type>jar</type>
+</dependency>
+```
+
+
+
+
+
+<a name="heading_11"></a>
+
+## Dependencies - Downloads <sup><sup>[top](#)</sup></sup>
+
+
+You will also need to download the following dependencies:
+
+
+
+### cobertura dependencies
+
+  - net.sourceforge.cobertura:cobertura:2.0.3: (It may be available on one of: [bintray](https://bintray.com/net.sourceforge.cobertura/maven/cobertura/2.0.3/view#files/net.sourceforge.cobertura/cobertura/2.0.3) [mvn central](http://search.maven.org/#artifactdetails|net.sourceforge.cobertura|cobertura|2.0.3|jar))
+
+
+### testCompile dependencies
+
+  - junit:junit:4.12: (It may be available on one of: [bintray](https://bintray.com/junit/maven/junit/4.12/view#files/junit/junit/4.12) [mvn central](http://search.maven.org/#artifactdetails|junit|junit|4.12|jar))
+
+
+### testRuntime dependencies
+
+  - junit:junit:4.12: (It may be available on one of: [bintray](https://bintray.com/junit/maven/junit/4.12/view#files/junit/junit/4.12) [mvn central](http://search.maven.org/#artifactdetails|junit|junit|4.12|jar))
+
+**NOTE:** You may need to download any dependencies of the above dependencies in turn (i.e. the transitive dependencies)
+
+--
+
+> `This README.md file was hand-crafted with care utilising synapticloop`[`templar`](https://github.com/synapticloop/templar/)`->`[`documentr`](https://github.com/synapticloop/documentr/)
+
+--

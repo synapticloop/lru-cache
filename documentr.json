@@ -1,0 +1,24 @@
+{
+	"context": {
+	},
+	"templates": [
+		{ "type":"inbuilt", "value":"jvm-compatability" },
+		{ "type":"inbuilt", "value":"project-name" },
+		{ "type":"inbuilt", "value":"project-description" },
+
+		{ "type": "markup", "value": "\n\n# Table of Contents\n\n" },
+
+		{ "type": "toc", "value": "2" },
+		{ "type": "toclinks", "value": "true" },
+		{ "type": "tocbacktotop", "value": " <sup><sup>[top](#)</sup></sup>" },
+
+		{ "type": "file", "value": "src/docs/usage.md" },
+
+		{ "type":"inbuilt", "value":"gradle-build" },
+		{ "type":"inbuilt", "value":"gradle-test" },
+
+		{ "type":"inbuilt", "value":"dependencies" },
+
+		{ "type":"inbuilt", "value":"attribution" }
+	]
+}

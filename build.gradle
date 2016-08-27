@@ -6,7 +6,7 @@ plugins {
 	id 'net.saliman.cobertura' version '2.2.6'
 	id "com.jfrog.bintray" version "1.4"
 	id 'synapticloop.copyrightr' version '1.0.1'
-	id 'synapticloop.documentr' version '2.0.0'
+	id 'synapticloop.documentr' version '2.5.2'
 	id 'synapticloop.projectFilestatistics' version '1.0.1'
 }
 
@@ -14,12 +14,12 @@ group = 'synapticloop'
 archivesBaseName = 'lru-cache'
 description = """A simple LRU cache implementation for java"""
 
-version = '1.1.0'
+version = '2.0.0'
 
 description = """lru-cache"""
 
-sourceCompatibility = 1.6
-targetCompatibility = 1.6
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
 
 
 
@@ -30,9 +30,9 @@ repositories {
 }
 
 dependencies {
-	testCompile 'junit:junit:4.7'
+	testCompile 'junit:junit:4.12'
 
-	testRuntime 'junit:junit:4.7'
+	testRuntime 'junit:junit:4.12'
 }
 
 /*
@@ -49,7 +49,7 @@ test {
 	forkEvery = 50 
 }
 
-def javaApiUrl = 'http://docs.oracle.com/javase/1.6.0/docs/api/'
+def javaApiUrl = 'http://docs.oracle.com/javase/7/docs/api/'
 def groovyApiUrl = 'http://groovy.codehaus.org/gapi/'
 
 tasks.withType(Javadoc) {
