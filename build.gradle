@@ -6,8 +6,10 @@ plugins {
 	id 'net.saliman.cobertura' version '2.2.6'
 	id "com.jfrog.bintray" version "1.4"
 	id 'co.riiid.gradle' version '0.4.2'
+
 	id 'synapticloop.copyrightr' version '1.0.1'
-	id 'synapticloop.documentr' version '2.5.2'
+	id 'synapticloop.documentr' version '2.9.0'
+
 	id 'synapticloop.projectFilestatistics' version '1.0.1'
 }
 
@@ -15,7 +17,7 @@ group = 'synapticloop'
 archivesBaseName = 'lru-cache'
 description = """A simple LRU cache implementation for java"""
 
-version = '2.0.0'
+version = '2.0.1'
 
 description = """lru-cache"""
 
@@ -34,6 +36,10 @@ dependencies {
 	testCompile 'junit:junit:4.12'
 
 	testRuntime 'junit:junit:4.12'
+}
+
+copyrightr {
+	dryRun = false
 }
 
 /*
